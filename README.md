@@ -124,6 +124,7 @@ python dp_pipeline/calc_deformation_potential.py
 - `POTCAR` 未生成：检查 `vaspkit 103` 是否可用。
 - `KPOINTS` 未生成：检查 `vaspkit 102/303` 是否执行成功。
 - `OUTCAR` 不完整：确保 VASP 正常结束并包含 `Elapsed time`。
+- 确认所使用的vasp.sh集群脚本，自行在`prepare_dp_opt_inputs.py`里进行修改
 
 ## 许可
 该项目未包含明确许可协议，如需公开或复用请先确认授权。

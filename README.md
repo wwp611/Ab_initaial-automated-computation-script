@@ -7,6 +7,7 @@
 - 自动准备输入文件（INCAR/KPOINTS/POTCAR/POSCAR）。
 - 提取能带关键能量，生成 `band_key_results.csv`。
 - 线性拟合得到形变势 `deformation_potential.csv`。
+- 提供 SCF 状态检查脚本 `check_scf_status.py`。
 
 ## 目录结构
 运行前请保证根目录下有以下结构（脚本会自动创建缺失目录）：

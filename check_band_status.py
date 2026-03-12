@@ -17,25 +17,23 @@ def check_mat(mat):
 
     for sd in STRAINS:
 
-        path = DP_DIR / mat / sd / "scf"
+        path = DP_DIR / mat / sd / "band"
         outcar = path / "OUTCAR"
 
-        # 没有 OUTCAR
         if not outcar.exists():
             unfinished.append((sd, "没有 OUTCAR"))
             continue
 
-        # 检查是否正常结束
         with open(outcar, "r", errors="ignore") as f:
             content = f.read()
 
         if REACHED_KEY not in content:
             unfinished.append((sd, "OUTCAR存在但没有 Elapsed time"))
 
-    # 只打印未完成材料
+    # 如果有未完成才打印
     if unfinished:
         print(f"\n🔧 材料: {mat}")
-        print("未完成 SCF：")
+        print("未完成 strain：")
 
         for sd, reason in unfinished:
             print(f"  ❌ {sd} : {reason}")
@@ -43,11 +41,7 @@ def check_mat(mat):
 
 def main():
 
-    if not DP_DIR.exists():
-        print("❌ 没有找到 DP 目录")
-        return
-
-    mats = sorted(d for d in os.listdir(DP_DIR) if os.path.isdir(DP_DIR / d))
+    mats = [d for d in os.listdir(DP_DIR) if os.path.isdir(DP_DIR / d)]
 
     for m in mats:
         check_mat(m)

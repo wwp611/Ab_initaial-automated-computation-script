@@ -7,7 +7,7 @@
 - 自动准备输入文件（INCAR/KPOINTS/POTCAR/POSCAR）。
 - 提取能带关键能量，生成 `band_key_results.csv`。
 - 线性拟合得到形变势 `deformation_potential.csv`。
-- 提供 SCF 状态检查脚本 `check_scf_status.py`。
+- 提供 SCF（参考例子） 状态检查脚本 `check_scf_status.py`。
 
 ## 目录结构
 运行前请保证根目录下有以下结构（脚本会自动创建缺失目录）：
@@ -123,9 +123,9 @@ python dp_pipeline/calc_deformation_potential.py
 ## 常见问题
 - `vaspkit` 未加载：请确认模块加载或 PATH 配置。
 - `POTCAR` 未生成：检查 `vaspkit 103` 是否可用。
-- `KPOINTS` 未生成：检查 `vaspkit 102/303` 是否执行成功。
 - `OUTCAR` 不完整：确保 VASP 正常结束并包含 `Elapsed time`。
 - 确认所使用的vasp.sh集群脚本，自行在`prepare_dp_opt_inputs.py`里进行修改
+- `check_scf_status.py` 以scf步骤出现问题（端口显示scf运行中但是是由于计算错误导致没有`Elapsed time`）。在`DP_project`目录下运行`python check_scf_status.py`可自动找出哪个mat存在问题。
 
 ## 许可
 该项目未包含明确许可协议，如需公开或复用请先确认授权。
